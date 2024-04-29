@@ -7,7 +7,12 @@ on:
 
 jobs:
   docker:
+    permissions:
+      contents: read
+      packages: write
+
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,7 +30,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -37,9 +42,8 @@ jobs:
             ghcr.io/mischavandenburg/zettelkasten-tracker:latest
             ghcr.io/mischavandenburg/zettelkasten-tracker:${{ steps.semver.outputs.next }}
 
-
-     #  - uses: actions/checkout@v4
+      #  - uses: actions/checkout@v4
     #  - name: Build the Docker image
-     #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 
-        # name: ${{ steps.semver.outputs.next }}
+    # name: ${{ steps.semver.outputs.next }}
