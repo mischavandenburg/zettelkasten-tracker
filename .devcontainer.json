@@ -1,7 +1,6 @@
 {
-  "image":"mcr.microsoft.com/devcontainers/go",
+  "image": "mcr.microsoft.com/devcontainers/go",
   "features": {
-    "ghcr.io/rio/features/chezmoi": {},
     "ghcr.io/devcontainers-contrib/features/neovim-homebrew:1": {}
   }
 }
